@@ -1,0 +1,73 @@
+package com.ScreenControl;
+
+import com.ScreenControl.ScreenControl.AllScreenStopRequest;
+import com.ScreenControl.ScreenControl.AllScreenStopResponse;
+import com.ScreenControl.ScreenControl.ScreenStatusRequest;
+import com.ScreenControl.ScreenControl.ScreenStatusResponse;
+import com.ScreenControl.ScreenControl.TurnScreenONRequest;
+import com.ScreenControl.ScreenControl.TurnScreenONResponse;
+import com.ScreenControl.ScreenControlServiceGrpc.ScreenControlServiceImplBase;
+
+import io.grpc.stub.StreamObserver;
+
+public class ScreenControlServer extends ScreenControlServiceImplBase	{
+
+	@Override
+	public void screenStatus(ScreenStatusRequest request, StreamObserver<ScreenStatusResponse> responseObserver) {
+		System.out.println("Screen Status");
+		
+		String ScreenID = request.getScreenID();
+		String Status = request.getStatus();
+		
+		ScreenStatusResponse.Builder response = ScreenStatusResponse.newBuilder();
+		if (ScreenID.equals(Status)) {
+			//return message - screen on
+			response.setScreenON(Status).setScreenON("ScreenON");
+			
+		}// if 
+		else {
+			//return message - screen of
+			response.setScreenOFF(Status).setScreenOFF("ScreenOFF");		
+			
+		}// else
+		
+		responseObserver.onNext(response.build());
+		responseObserver.onCompleted();	
+	}
+
+	@Override
+	public void turnScreenON(TurnScreenONRequest request, StreamObserver<TurnScreenONResponse> responseObserver) {
+		System.out.println("Turn Screen on");
+		
+		String ScreenID = request.getScreenID();
+		String ScreenON = request.getScreenON();
+		
+		TurnScreenONResponse.Builder response = TurnScreenONResponse.newBuilder();
+		if (ScreenID.equals(ScreenON)) {
+			//return message screen will be on
+			response.setScreenID(ScreenON).setScreenON("Screen is on");	
+		}//if
+
+		responseObserver.onNext(response.build());
+		responseObserver.onCompleted();	
+				
+	}
+
+//	@Override
+//	public void allScreenStop(AllScreenStopRequest request, StreamObserver<AllScreenStopResponse> responseObserver) {
+//		System.out.println("All Screen Stop");
+//		
+//		String ScreenID = request.getScreenID();
+//		String AllScreenOFF = request.getAllScreenOFF();
+//		
+//		AllScreenStopResponse.Builder response = AllScreenStopResponse.newBuilder();
+//		if (ScreenID.equals(AllScreenOFF)) {
+//			//return message screen will be off
+//			response.setScreenID(AllScreenOFF).setAllScreenOFF("Screen is off");		
+//		}//if
+//		
+//	}
+
+	
+	
+}//class
