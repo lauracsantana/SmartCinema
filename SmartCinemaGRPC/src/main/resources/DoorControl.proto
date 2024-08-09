@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+//the name of the package that will be created with the java classes
+option java_package = "com.DoorControl";
+
+service DoorControlService {
+
+   rpc StreamDoorHistory (DoorHistoryRequest) returns (stream DoorHistoryResponse);
+   rpc DoorStatus (DoorStatusRequest) returns (DoorStatusResponse);
+}
+
+//// method 1 messages
+message DoorHistoryRequest {
+	string DoorID = 1;
+}
+
+message DoorHistoryResponse {
+	string StaffID = 1;
+	string DoorLevel = 2;	
+}
+
+//// method 2 messages
+message DoorStatusRequest {
+	string DoorID = 1;
+}
+
+message DoorStatusResponse {
+	string DoorOpen = 1;
+	string DoorClose = 2;
+	string DoorLock = 3;
+}
+
+message Empty {
+}

@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+//the name of the package that will be created with the java classes
+option java_package = "com.StaffControl";
+
+service StaffControlService {
+
+	rpc StaffStatus(StaffStatusRequest) returns (StaffStatusResponse);
+	rpc StreamStaffHours (StaffHoursRequest) returns (stream StaffHoursResponse);
+}
+
+
+//// method 1 messages
+message StaffStatusRequest {
+	string StaffID = 1;
+}
+
+message StaffStatusResponse {
+	string StaffON = 1;
+	string StaffOFF = 2;
+}
+
+
+//// method 2 messages
+message StaffHoursRequest {
+	string StaffID = 1;
+}
+
+message StaffHoursResponse {
+	string StaffHours = 1;
+	bool isOn = 2;
+}
+
+message Empty {
+}

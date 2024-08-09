@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+//the name of the package that will be created with the java classes
+option java_package = "com.ScreenControl";
+
+service ScreenControlService {
+
+	rpc ScreenStatus(ScreenStatusRequest) returns (ScreenStatusResponse);
+	rpc TurnScreenON(TurnScreenONRequest) returns (TurnScreenONResponse);
+	rpc AllScreenStop (AllScreenStopRequest) returns (AllScreenStopResponse);
+}
+
+//// method 1 messages ScreenStatus
+message ScreenStatusRequest {
+	string ScreenID = 1;
+	string Status = 2;
+}
+message ScreenStatusResponse {
+	string ScreenON = 1;
+	string ScreenOFF = 2;
+}
+
+//// method 2 messages TurnScreenON
+message TurnScreenONRequest {
+	string ScreenID = 1;
+	string ScreenON = 2;
+}
+message TurnScreenONResponse {
+	string ScreenID = 1;
+	string ScreenON = 2;
+	string ScreenOFF = 3;
+}
+
+//// method 3 messages AllScreenStop
+message AllScreenStopRequest {
+	string ScreenID = 1;
+	string AllScreenOFF = 2;
+}
+message AllScreenStopResponse {
+	string ScreenID = 1;
+	string AllScreenOFF = 2;
+}
+
+message Empty {
+}
+
