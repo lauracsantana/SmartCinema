@@ -19,14 +19,14 @@ public class DoorControlServiceRegistration {
             // Define service type and properties
             String serviceType = "_doorcontrol._tcp.local.";
             String serviceName = "DoorControlService";
-            int servicePort = 50051; // Port where your gRPC server is running
+            int servicePort = 50051; // Port where gRPC server is running
 
             // Create a ServiceInfo object
             ServiceInfo serviceInfo = ServiceInfo.create(
                 serviceType,
                 serviceName,
                 servicePort,
-                "path=index.html" // optional: add properties if needed
+                "path=index.html" // add properties if needed
             );
 
             // Register the service

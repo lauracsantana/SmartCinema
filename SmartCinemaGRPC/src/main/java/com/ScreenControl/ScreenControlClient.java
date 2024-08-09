@@ -69,31 +69,31 @@ public class ScreenControlClient {
     }
 
     /** Call the AllScreenStop RPC method. */
-//    public void stopAllScreens(String screenId, String status) {
-//        logger.info("Stopping all screens for screen ID: " + screenId);
-//        AllScreenStopRequest request = AllScreenStopRequest.newBuilder()
-//                .setScreenID(screenId)
-//                .setAllScreenOFF(AllScreenOFF)
-//                .build();
-//        AllScreenStopResponse response;
-//        try {
-//            response = blockingStub.allScreenStop(request);
-//            logger.info("Screen OFF: " + response.getAllScreenOFF());
-//        } catch (StatusRuntimeException e) {
-//            logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-//        }
-//    }
-//
-//    public static void main(String[] args) throws Exception {
-//        ScreenControlClient client = new ScreenControlClient("localhost", 50051);
-//        try {
-//            client.getScreenStatus("123", "ON");
-//            client.turnScreenON("123", "ON");
-//            client.stopAllScreens("123", "STOPPED");
-//        } finally {
-//            client.shutdown();
-//        }
-//    }
+    public void stopAllScreens(String screenId, String status) {
+        logger.info("Stopping all screens for screen ID: " + screenId);
+        AllScreenStopRequest request = AllScreenStopRequest.newBuilder()
+                .setScreenID(screenId)
+                .setAllScreenOFF(AllScreenOFF)
+                .build();
+        AllScreenStopResponse response;
+        try {
+            response = blockingStub.allScreenStop(request);
+            logger.info("Screen OFF: " + response.getAllScreenOFF());
+        } catch (StatusRuntimeException e) {
+            logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        ScreenControlClient client = new ScreenControlClient("localhost", 50051);
+        try {
+            client.getScreenStatus("123", "ON");
+            client.turnScreenON("123", "ON");
+            client.stopAllScreens("123", "STOPPED");
+        } finally {
+            client.shutdown();
+        }
+    }
     
 }//class
 	

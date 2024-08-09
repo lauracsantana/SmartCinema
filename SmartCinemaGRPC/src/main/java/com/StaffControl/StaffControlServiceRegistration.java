@@ -19,7 +19,7 @@ public class StaffControlServiceRegistration {
             // Define service type and properties
             String serviceType = "_staffcontrol._tcp.local.";
             String serviceName = "StaffControlService";
-            int servicePort = 50053; // Port where your gRPC server is running
+            int servicePort = 50053; // Port where  gRPC server is running
 
             // Create a ServiceInfo object
             ServiceInfo serviceInfo = ServiceInfo.create(

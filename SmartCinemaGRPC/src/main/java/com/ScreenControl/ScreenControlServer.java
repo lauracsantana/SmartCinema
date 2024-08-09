@@ -19,11 +19,11 @@ public class ScreenControlServer {
 
         @Override
         public void screenStatus(ScreenStatusRequest request, StreamObserver<ScreenStatusResponse> responseObserver) {
-            // Example implementation: send dummy data
+            // Example implementation: send random data
             String screenID = request.getScreenID();
             String status = request.getStatus();
 
-            // For demonstration purposes, we will return fixed status values
+            // return fixed status values
             ScreenStatusResponse response = ScreenStatusResponse.newBuilder()
                     .setScreenON("ON".equals(status) ? "Screen is ON" : "Screen is OFF")
                     .setScreenOFF("OFF".equals(status) ? "Screen is OFF" : "Screen is ON")
@@ -35,7 +35,7 @@ public class ScreenControlServer {
 
         @Override
         public void turnScreenON(TurnScreenONRequest request, StreamObserver<TurnScreenONResponse> responseObserver) {
-            // Example implementation: send dummy data
+            // Example implementation: send random data
             TurnScreenONResponse response = TurnScreenONResponse.newBuilder()
                     .setScreenID(request.getScreenID())
                     .setScreenON("ON")
@@ -48,7 +48,7 @@ public class ScreenControlServer {
 
         @Override
         public void allScreenStop(AllScreenStopRequest request, StreamObserver<AllScreenStopResponse> responseObserver) {
-            // Example implementation: send dummy data
+            // Example implementation: send random data
             AllScreenStopResponse response = AllScreenStopResponse.newBuilder()
                     .setScreenID(request.getScreenID())
                     .setAllScreenOFF("All screens are OFF")

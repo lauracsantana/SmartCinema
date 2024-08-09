@@ -19,7 +19,7 @@ public class ScreenControlServiceRegistration {
             // Define service type and properties
             String serviceType = "_screencontrol._tcp.local.";
             String serviceName = "ScreenControlService";
-            int servicePort = 50052; // Port where your gRPC server is running
+            int servicePort = 50052; // Port where gRPC server is running
 
             // Create a ServiceInfo object
             ServiceInfo serviceInfo = ServiceInfo.create(
