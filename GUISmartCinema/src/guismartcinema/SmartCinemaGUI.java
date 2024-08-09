@@ -57,6 +57,11 @@ public class SmartCinemaGUI extends javax.swing.JFrame {
         ScreenControlPnl.setBorder(javax.swing.BorderFactory.createTitledBorder("ScreenControl"));
 
         ScreenStatusBtn.setText("ScreenStatus");
+        ScreenStatusBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ScreenStatusBtnActionPerformed(evt);
+            }
+        });
 
         ScreenONBtn.setText("ScreenON");
         ScreenONBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +71,11 @@ public class SmartCinemaGUI extends javax.swing.JFrame {
         });
 
         AllScreenOFFBtn.setText("AllScreenOFF");
+        AllScreenOFFBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AllScreenOFFBtnActionPerformed(evt);
+            }
+        });
 
         ScreenResponseTa.setColumns(20);
         ScreenResponseTa.setRows(5);
@@ -118,8 +128,18 @@ public class SmartCinemaGUI extends javax.swing.JFrame {
         StaffControlPnl.setBorder(javax.swing.BorderFactory.createTitledBorder("StaffControl"));
 
         StaffStatusBtn.setText("StaffStatus");
+        StaffStatusBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StaffStatusBtnActionPerformed(evt);
+            }
+        });
 
         StaffHoursBtn.setText("StaffHours");
+        StaffHoursBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StaffHoursBtnActionPerformed(evt);
+            }
+        });
 
         StaffResponseTa.setColumns(20);
         StaffResponseTa.setRows(5);
@@ -166,8 +186,18 @@ public class SmartCinemaGUI extends javax.swing.JFrame {
         DoorControlPnl.setBorder(javax.swing.BorderFactory.createTitledBorder("DoorControl"));
 
         DoorStatusBtn.setText("DoorStatus");
+        DoorStatusBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DoorStatusBtnActionPerformed(evt);
+            }
+        });
 
         DoorHistoryBtn.setText("DoorHistory");
+        DoorHistoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DoorHistoryBtnActionPerformed(evt);
+            }
+        });
 
         DoorInputLbl.setText("Input:");
 
@@ -188,9 +218,9 @@ public class SmartCinemaGUI extends javax.swing.JFrame {
                         .addComponent(DoorInputTf))
                     .addGroup(DoorControlPnlLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addGroup(DoorControlPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(DoorStatusBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DoorHistoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGroup(DoorControlPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DoorStatusBtn)
+                            .addComponent(DoorHistoryBtn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28))
@@ -274,7 +304,91 @@ public class SmartCinemaGUI extends javax.swing.JFrame {
 
     private void ScreenONBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScreenONBtnActionPerformed
         // TODO add your handling code here:
+        @Override
+        public void turnScreenON(TurnScreenONRequest request, StreamObserver<TurnScreenONResponse> responseObserver) {
+            // Example implementation: send dummy data
+            TurnScreenONResponse response = TurnScreenONResponse.newBuilder()
+                    .setScreenID(request.getScreenID())
+                    .setScreenON("ON")
+                    .setScreenOFF("OFF")
+                    .build();
+
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        }
     }//GEN-LAST:event_ScreenONBtnActionPerformed
+
+    private void ScreenStatusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScreenStatusBtnActionPerformed
+        // TODO add your handling code here:
+        @Override
+        public void screenStatus(ScreenStatusRequest request, StreamObserver<ScreenStatusResponse> responseObserver) {
+            // Example implementation: send dummy data
+            String screenID = request.getScreenID();
+            String status = request.getStatus();
+
+            // For demonstration purposes, we will return fixed status values
+            ScreenStatusResponse response = ScreenStatusResponse.newBuilder()
+                    .setScreenON("ON".equals(status) ? "Screen is ON" : "Screen is OFF")
+                    .setScreenOFF("OFF".equals(status) ? "Screen is OFF" : "Screen is ON")
+                    .build();
+
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        }
+    }//GEN-LAST:event_ScreenStatusBtnActionPerformed
+
+    private void AllScreenOFFBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllScreenOFFBtnActionPerformed
+        // TODO add your handling code here:
+        @Override
+        public void allScreenStop(AllScreenStopRequest request, StreamObserver<AllScreenStopResponse> responseObserver) {
+            // Example implementation: send dummy data
+            AllScreenStopResponse response = AllScreenStopResponse.newBuilder()
+                    .setScreenID(request.getScreenID())
+                    .setAllScreenOFF("All screens are OFF")
+                    .build();
+
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        }
+    }
+    }//GEN-LAST:event_AllScreenOFFBtnActionPerformed
+
+    private void StaffStatusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StaffStatusBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StaffStatusBtnActionPerformed
+
+    private void DoorHistoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoorHistoryBtnActionPerformed
+        // TODO add your handling code here:
+        @Override
+        public void streamDoorHistory(DoorHistoryRequest request, StreamObserver<DoorHistoryResponse> responseObserver) {
+            for (int i = 0; i < 5; i++) {
+                DoorHistoryResponse response = DoorHistoryResponse.newBuilder()
+                        .setStaffID("Staff-" + i)
+                        .setDoorLevel("Level-" + i)
+                        .build();
+                responseObserver.onNext(response);
+            }
+            responseObserver.onCompleted();
+        }
+    }//GEN-LAST:event_DoorHistoryBtnActionPerformed
+
+    private void DoorStatusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoorStatusBtnActionPerformed
+        // TODO add your handling code here:
+       @Override
+        public void doorStatus(DoorStatusRequest request, StreamObserver<DoorStatusResponse> responseObserver) {
+            DoorStatusResponse response = DoorStatusResponse.newBuilder()
+                    .setDoorOpen("Door is open")
+                    .setDoorClose("Door is closed")
+                    .setDoorLock("Door is locked")
+                    .build();
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        }
+    }//GEN-LAST:event_DoorStatusBtnActionPerformed
+
+    private void StaffHoursBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StaffHoursBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StaffHoursBtnActionPerformed
 
     /**
      * @param args the command line arguments

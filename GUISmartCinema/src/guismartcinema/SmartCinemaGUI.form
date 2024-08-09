@@ -154,6 +154,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ScreenStatus"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ScreenStatusBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ScreenONBtn">
               <Properties>
@@ -167,6 +170,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="AllScreenOFF"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AllScreenOFFBtnActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -252,11 +258,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="StaffStatus"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StaffStatusBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="StaffHoursBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="StaffHours"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StaffHoursBtnActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <AuxValues>
@@ -304,9 +316,9 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="DoorStatusBtn" max="32767" attributes="0"/>
-                                  <Component id="DoorHistoryBtn" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="DoorStatusBtn" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DoorHistoryBtn" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="235" max="-2" attributes="0"/>
@@ -342,11 +354,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="DoorStatus"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DoorStatusBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="DoorHistoryBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="DoorHistory"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DoorHistoryBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="DoorInputLbl">
               <Properties>
